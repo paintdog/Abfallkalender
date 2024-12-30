@@ -9,7 +9,7 @@ Der Müllkalender enthält folgende Einträge (ergänzt!):
 | Papier nicht vergessen!                          | 🟦 Blaue Tonne                      |
 | Leichtverpackungen Vorverlegung nicht vergessen! | 🟨 Gelbe Tonne (Vorverlegung)       |
 | Leichtverpackungen nicht vergessen!              | 🟨 Gelbe Tonne                      |
-| Restabfall Vorverlegung nicht vergessen!         | ⬛ Schwarze Tonne (Vorverlegung)    |
-| Restabfall nicht vergessen!                      | ⬛ Schwarze Tonne                   |
+| Restabfall Vorverlegung nicht vergessen!         | ⬛ Graue Tonne (Vorverlegung)       |
+| Restabfall nicht vergessen!                      | ⬛ Graue Tonne                      |
 | Bioabfall Vorverlegung nicht vergessen!          | 🟫 Braune Tonne (Vorverlegung)      |
 | Bioabfall nicht vergessen!                       | 🟫 Braune Tonne                     |

@@ -6,11 +6,17 @@ old2new_description = {
     "Papier nicht vergessen!": "🟦 Blaue Tonne",
     "Leichtverpackungen Vorverlegung nicht vergessen!": "🟨 Gelbe Tonne (Vorverlegung)",
     "Leichtverpackungen nicht vergessen!": "🟨 Gelbe Tonne",
-    "Restabfall Vorverlegung nicht vergessen!": "⬛ Schwarze Tonne (Vorverlegung)",
-    "Restabfall nicht vergessen!": "⬛ Schwarze Tonne",
+    "Restabfall Vorverlegung nicht vergessen!": "⬛ Graue Tonne (Vorverlegung)",
+    "Restabfall nicht vergessen!": "⬛ Graue Tonne",
     "Bioabfall Vorverlegung nicht vergessen!": "🟫 Braune Tonne (Vorverlegung)",
     "Bioabfall nicht vergessen!": "🟫 Braune Tonne"
 }
+
+old2new_summary = {"Papier" : "🟦 Blaue Tonne",
+                   "Leichtverpackungen" : "🟨 Gelbe Tonne",
+                   "Restabfall" : "⬛ Graue Tonne",
+                   "Bioabfall" : "🟫 Braune Tonne",
+                   "Grünbündel" : "🌲 Grünbündel (Tannenbaumabfuhr)"}
 
 def main():
     directory = os.path.dirname(os.getcwd()) + "/ics"
@@ -21,7 +27,7 @@ def main():
 
     interesting_items = []
     for line in data:
-        if line.startswith("DESCRIPTION"):
+        if line.startswith("SUMMARY:"):
             print(line, end="")
             interesting_items.append(line)
     print("-" * 50)
@@ -29,7 +35,11 @@ def main():
         print(item, end="")
 
     for i, line in enumerate(data):
+        """
         for old, new in old2new_description.items():
+            data[i] = data[i].replace(old, new)
+        """
+        for old, new in old2new_summary.items():
             data[i] = data[i].replace(old, new)
 
     with open(f"{directory}/output.ics", "w", encoding="utf-8") as f:
