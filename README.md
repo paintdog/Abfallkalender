@@ -1,4 +1,4 @@
-# abfallkalender
+# 🗑️ Abfallkalender
 
 Der Müllkalender enthält folgende Einträge (ergänzt!):
 
