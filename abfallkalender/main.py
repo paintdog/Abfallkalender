@@ -1,16 +1,22 @@
-# This is a sample Python script.
+import os
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    directory = os.path.dirname(os.getcwd()) + "/ics"
+    data = []
+    with open(f"{directory}/calendar.ics", "r") as f:
+        data = f.readlines()
+    print(len(data))
 
+    interesting_items = []
+    for line in data:
+        if line.startswith("DESCRIPTION"):
+            print(line, end="")
+            interesting_items.append(line)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
+    print("-" * 50)
+    for item in list(set(interesting_items)):
+        print(item, end="")
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
