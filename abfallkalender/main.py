@@ -1,9 +1,21 @@
 import os
 
+old2new_description = {
+    "Grünbündel nur Tannenbaumabfuhr nicht vergessen!": "🌲 Grünbündel nur Tannenbaumabfuhr",
+    "Papier Vorverlegung nicht vergessen!": "🟦 Blaue Tonne (Vorverlegung)",
+    "Papier nicht vergessen!": "🟦 Blaue Tonne",
+    "Leichtverpackungen Vorverlegung nicht vergessen!": "🟨 Gelbe Tonne (Vorverlegung)",
+    "Leichtverpackungen nicht vergessen!": "🟨 Gelbe Tonne",
+    "Restabfall Vorverlegung nicht vergessen!": "⬛ Schwarze Tonne (Vorverlegung)",
+    "Restabfall nicht vergessen!": "⬛ Schwarze Tonne",
+    "Bioabfall Vorverlegung nicht vergessen!": "🟫 Braune Tonne (Vorverlegung)",
+    "Bioabfall nicht vergessen!": "🟫 Braune Tonne"
+}
+
 def main():
     directory = os.path.dirname(os.getcwd()) + "/ics"
     data = []
-    with open(f"{directory}/calendar.ics", "r") as f:
+    with open(f"{directory}/calendar.ics", "r", encoding="utf-8") as f:
         data = f.readlines()
     print(len(data))
 
@@ -12,11 +24,18 @@ def main():
         if line.startswith("DESCRIPTION"):
             print(line, end="")
             interesting_items.append(line)
-
     print("-" * 50)
     for item in list(set(interesting_items)):
         print(item, end="")
 
-# Press the green button in the gutter to run the script.
+    for i, line in enumerate(data):
+        for old, new in old2new_description.items():
+            data[i] = data[i].replace(old, new)
+
+    with open(f"{directory}/output.ics", "w", encoding="utf-8") as f:
+        for line in data:
+            f.write(line)
+    print("output.ics written.")
+
 if __name__ == '__main__':
     main()
